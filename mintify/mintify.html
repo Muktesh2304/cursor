@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mintlify Clone</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(120deg,#020b2a,#031c3f,#022d4f);
+    color:white;
+}
+
+/* Navbar */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 60px;
+    position: sticky;
+    top: 0;
+    background:linear-gradient(120deg,#020b2a,#031c3f,#022d4f);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.logo img{
+    height:34px;
+}
+
+.logo span{
+    font-size:22px;
+    font-weight:700;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#ccc;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.contact{
+    background:transparent;
+    border:1px solid #444;
+    color:#ddd;
+    padding:10px 18px;
+    border-radius:20px;
+}
+
+.start{
+    background:white;
+    color:black;
+    border:none;
+    padding:10px 20px;
+    border-radius:20px;
+    font-weight:600;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #dbeafe;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 30px;
+}
+
+/* NEW label */
+.badge .new {
+  background: #22c55e;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* arrow */
+.badge .arrow {
+  opacity: 0.7;
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:54px;
+    font-weight:600;
+}
+
+.hero h1 span{
+    color:#bbb;
+}
+
+.hero p{
+    color:#bbb;
+    margin:20px 0;
+}
+
+/* Signup */
+
+.signup{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.signup input{
+    width:300px;
+    padding:14px;
+    border-radius:30px;
+    border:none;
+}
+
+.signup button{
+    background:#22e6b3;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+/* Preview */
+
+.preview-section{
+    display:flex;
+    justify-content:center;
+    margin:40px 0;
+}
+
+.preview-img{
+    max-width:1100px;
+    width:100%;
+    border-radius:16px;
+}
+
+/* ================= FEATURES ================= */
+
+.features-section{
+    padding:80px 20px;
+}
+
+.features-container{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+}
+
+.features-title{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.features-subtitle{
+    color:#999;
+    margin-bottom:60px;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+.feature-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:20px;
+    text-align:left;
+}
+
+.feature-label{
+    color:#22e6b3;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.feature-heading{
+    font-size:26px;
+    margin-bottom:15px;
+}
+
+.feature-description{
+    color:#aaa;
+    margin-bottom:30px;
+}
+
+/* Visuals */
+
+.feature-visual{
+    min-height:120px;
+    background:#0a0a0a;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+/* Checklist */
+
+.feature-visual.checklist{
+    background:transparent;
+}
+
+.check-circle{
+    width:60px;
+    height:60px;
+    background:#22e6b3;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:black;
+    font-size:24px;
+}
+
+/* ================= CTA ================= */
+
+.cta-section{
+    padding:100px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.cta-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.cta-title{
+    font-size:56px;
+    margin-bottom:20px;
+}
+
+.cta-subtitle{
+    color:#bbb;
+    margin-bottom:40px;
+}
+
+/* Buttons */
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:80px;
+}
+
+.cta-btn{
+    padding:14px 32px;
+    border-radius:30px;
+    border:none;
+    font-weight:600;
+}
+
+.cta-btn.primary{
+    background:white;
+    color:black;
+}
+
+.cta-btn.secondary{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+/* CTA Cards */
+
+.cta-cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    max-width:800px;
+    margin:auto;
+    gap:2px;
+    background:rgba(255,255,255,0.1);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.cta-card{
+    background:rgba(0,0,0,0.7);
+    padding:50px 40px;
+}
+
+.card-icon{
+    width:60px;
+    height:60px;
+    background:rgba(34,230,179,0.1);
+    margin:auto auto 25px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#22e6b3;
+}
+
+.card-title{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.card-description{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.card-link{
+    color:#22e6b3;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .signup{
+        flex-direction:column;
+    }
+
+    .signup input{
+        width:100%;
+    }
+
+    .features-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cta-title{
+        font-size:36px;
+    }
+
+    .cta-buttons{
+        flex-direction:column;
+    }
+
+    .cta-cards{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar">
+
+<div class="logo">
+    <!-- <span>mintlify</span> -->
+    <img src="image.png" alt="Mintlify Logo">
+    <h2>mintify</h2>
+</div>
+
+<ul class="nav-links">
+    <li><a href="#">Resources</a></li>
+    <li><a href="#">Docs</a></li>
+    <li><a href="#">Customers</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Pricing</a></li>
+</ul>
+
+<div class="nav-buttons">
+    <button class="contact">Contact</button>
+    <button class="start">Start Free</button>
+</div>
+
+</nav>
+
+<!-- Hero -->
+
+
+<section class="hero">
+
+    <div class="badge">
+<span class="new">NEW</span>
+Self-updating docs with agent suggestions
+<span class="arrow">-> </span>
+</div>
+
+<h1>The Intelligent<br><span>Knowledge Platform</span></h1>
+
+<p>
+Helping teams create and maintain world-class <br> documentation built for both humans and AI
+</p>
+
+<div class="signup">
+    <input type="email" placeholder="Email address">
+    <button>Start now</button>
+</div>
+
+</section>
+
+
+<!-- Preview -->
+
+
+
+
+<div class="preview-section">
+    <img src="preview.jpeg" class="preview-img">
+</div>
+
+<!-- FEATURES -->
+
+<section class="features-section">
+
+<div class="features-container">
+
+<h2 class="features-title">Built for the intelligence age</h2>
+
+<p class="features-subtitle">
+Integrate AI into every part of your docs lifecycle. Woven into how your <br>knowledge is written, maintained, and understood by both users and LLMs.
+</p>
+
+<div class="features-grid">
+
+<!-- Card 1 -->
+
+<div class="feature-card">
+
+<div class="feature-label">LLMS.TXT & MCP</div>
+
+<h3 class="feature-heading">Built for both people and AI</h3>
+
+<p class="feature-description">
+Ensure your product shows up in AI workflows.
+</p>
+
+<div class="feature-visual">
+<img src="Screenshot 2026-02-07 102851.png" alt="LLMS.TXT & MCP"></div>
+
+</div>
+
+<!-- Card 2 -->
+
+<div class="feature-card">
+
+<div class="feature-label">AGENT</div>
+
+<h3 class="feature-heading">Self-updating knowledge</h3>
+
+<p class="feature-description">
+Draft, edit, and maintain content with a context-aware agent. Move faster and more consistently without the documentation debt.
+</p>
+
+<div class="feature-visual checklist">
+
+<div class="check-circle">✔</div>
+<div class="check-circle">✔</div>
+<div class="check-circle">✔</div>
+<div class="check-circle">✔</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section">
+
+<div class="cta-container">
+
+<h2 class="cta-title">
+Make documentation<br>
+your winning advantage
+</h2>
+
+<p class="cta-subtitle">
+Join the leaders of tomorrow today.
+</p>
+
+<div class="cta-buttons">
+
+<button class="cta-btn primary">Get started for free</button>
+<button class="cta-btn secondary">Get a demo</button>
+
+</div>
+
+<div class="cta-cards">
+
+<div class="cta-card">
+
+<div class="card-icon">💰</div>
+
+<h3 class="card-title">Pricing</h3>
+
+<p class="card-description">
+Pick the right plan
+</p>
+
+<a href="#" class="card-link">Details →</a>
+
+</div>
+
+<div class="cta-card">
+
+<div class="card-icon">🚀</div>
+
+<h3 class="card-title">Start Building</h3>
+
+<p class="card-description">
+Deploy in minutes
+</p>
+
+<a href="#" class="card-link">Quickstart →</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
